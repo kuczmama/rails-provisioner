@@ -1,0 +1,28 @@
+{
+  "group": "group",
+  "port": default_port,
+  "run_list": [
+    "recipe[rails-server]",
+    "recipe[rails-server::users]",
+    "recipe[rails-server::ssh]",
+    "recipe[rails-server::nodejs]",
+    "recipe[rails-server::postgres]",
+    "recipe[rails-server::rbenv]",
+    "recipe[rails-server::redis]",
+    "recipe[rails-server::nginx]",
+    "recipe[rails-server::app]"
+  ],
+  "user": {
+    "name": "default_user",
+    "password": "default_password"
+
+  },
+
+  "db": {
+    "root_password": "default_pg_password",
+    "user": {
+      "name": "default_pg_user",
+      "password": "default_pg_password"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "group": "group",
+  "port": 12345,
+  "run_list": [
+    "recipe[rails-server]",
+    "recipe[rails-server::users]",
+    "recipe[rails-server::ssh]",
+    "recipe[rails-server::nodejs]",
+    "recipe[rails-server::postgres]",
+    "recipe[rails-server::rbenv]",
+    "recipe[rails-server::redis]",
+    "recipe[rails-server::nginx]",
+    "recipe[rails-server::app]"
+  ],
+  "user": {
+    "name": "mark",
+    "password": "$1$3tREZ.9p$5uHdM1/0mW.r73pwWKwD81"
+
+  },
+
+  "db": {
+    "root_password": "monkey123",
+    "user": {
+      "name": "mark",
+      "password": "monkey123"
+    }
+  }
+}

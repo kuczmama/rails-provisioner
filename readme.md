@@ -32,6 +32,10 @@ ex:
 2. ssh into your server at least once, and setup any default password
 3. Setup ssh key for server with github or whatever git repository you want to use
 
+eg.
+./init.sh deploy monkey123 127.0.0.1 12345 myapp
+
+
 
 This sets up your server username and password to be the same as your postgres username and password
 

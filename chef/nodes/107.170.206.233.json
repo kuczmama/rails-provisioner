@@ -1,0 +1,28 @@
+{
+  "group": "group",
+  "port": 12345,
+  "run_list": [
+    "recipe[rails-server]",
+    "recipe[rails-server::users]",
+    "recipe[rails-server::ssh]",
+    "recipe[rails-server::nodejs]",
+    "recipe[rails-server::postgres]",
+    "recipe[rails-server::rbenv]",
+    "recipe[rails-server::redis]",
+    "recipe[rails-server::nginx]",
+    "recipe[rails-server::app]"
+  ],
+  "user": {
+    "name": "deploy",
+    "password": "$1$UgasV02I$KqzbvA1e.CPz7/7UpP.fR0"
+
+  },
+
+  "db": {
+    "root_password": "pop12345",
+    "user": {
+      "name": "deploy",
+      "password": "pop12345"
+    }
+  }
+}

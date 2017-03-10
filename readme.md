@@ -28,9 +28,20 @@ ex:
 
 ## Before you run
 
+
 1. Put `gem 'unicorn', '~> 5.2'` gem into your gemfile
 2. ssh into your server at least once, and setup any default password
-3. Setup ssh key for server with github or whatever git repository you want to use
+3. 
+	Generate ssh key and put onto git (repository must be version controlled with git)
+	<span>
+	ssh-keygen -t rsa -b 4096 
+	eval "$(ssh-agent -s)"
+	</span>
+	cat ~/.ssh/id_rsa.pub
+	https://github.com/settings/keys
+4. run init.sh
+5. run `cap production deploy`
+
 
 eg.
 ./init.sh deploy monkey123 127.0.0.1 12345 myapp

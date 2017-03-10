@@ -22,13 +22,14 @@ echo "Using password hash: ${password_hash}"
 # Replace port, username, password, pg_username, and pg_password
 # Create a new file named {IP}.json
 cp chef/nodes/default.json chef/nodes/${IP}.json
+sed -i -e "s/'default_app_name'/${APP_NAME}/g" chef/site-cookbooks/attributes/default.rb
 sed -i -e "s/default_port/${PORT}/g" chef/nodes/${IP}.json
 sed -i -e "s/default_user/${USER}/g" chef/nodes/${IP}.json
 sed -i -e "s/default_password/${password_hash}/g" chef/nodes/${IP}.json
 sed -i -e "s/default_pg_user/${USER}/g" chef/nodes/${IP}.json
 sed -i -e "s/default_pg_password/${PASSWORD}/g" chef/nodes/${IP}.json
 rm chef/nodes/${IP}.json-e #idk why this file is created
-
+rm chef/site-cookbooks/attributes/default.rb-e
 # replace appname
 sed -i -e "s/default_app_name/${APP_NAME}/g" chef/site-cookbooks/rails-server/attributes/default.rb
 rm chef/site-cookbooks/rails-server/attributes/default.rb-e
@@ -99,7 +100,7 @@ cat <<EOT>> deploy.rb
 	set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 	set :rbenv_roles, :all
 
-	set :linked_files, %w{config/database.yml config/application.yml}
+	# set :linked_files, %w{config/database.yml config/application.yml}
 	set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 	set :keep_releases, 5
@@ -111,7 +112,7 @@ fi
 
 # # # upload app
 # cd ../.. && cap production setup:all
-cd .. && cap production deploy
+# cd .. && cap production deploy
 
 # restart nginx
 ssh -t $USER@$IP 'sudo service nginx restart'

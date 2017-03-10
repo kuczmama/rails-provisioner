@@ -1,4 +1,4 @@
-default['app']               = 'test'
+default['app']               = 'default_app_name'
 
 default['nodejs']['dir']     = '/usr/local'
 default['nodejs']['version'] = '0.10.29'
